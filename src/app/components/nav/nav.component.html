@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+    <a routerLink="/">{{ appName }}
+      <img alt="hamtaro" src="assets/img/hamtaro.png" width="50" height="50"/>
+    </a>
+    <span class="fill-remaining-space"></span>
+
+    <a routerLink="/user" routerLinkActive="active"> 
+      <button mat-button>Users</button>
+    </a>
+
+    <a routerLink="/book" routerLinkActive="active"> 
+      <button mat-button>Book</button>
+    </a>
+  
+    <a routerLink="/event" routerLinkActive="active">
+      <button mat-button>Event</button>
+    </a>
+
+    <a routerLink="/calendar" routerLinkActive="active">
+        <button mat-button>Calendar</button>
+    </a>
+  
+    <!-- <a *ngIf="authSvc.userData$ | async; else showLogin" (click)="onLogout()">
+      <button mat-button>Logout</button>
+    </a>
+  
+    <ng-template #showLogin>
+      <a routerLink="/login" routerLinkActive="active">
+        <button mat-button>Login</button>
+      </a>
+    </ng-template> -->
+</mat-toolbar>
