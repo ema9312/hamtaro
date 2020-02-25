@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
   post: any = "";
   user: User;
   action: string = "Create"
+  hide = true;
 
   constructor(
     private userService: UserService,

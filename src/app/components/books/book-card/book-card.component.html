@@ -12,11 +12,11 @@
   />
   <mat-card-content>
     <p>
-      Published in <strong>{{book.published}}</strong> 
+      Published in <strong>{{book.published}}</strong>
     </p>
   </mat-card-content>
-  <mat-divider></mat-divider>
-  <mat-card-actions>
+  <mat-divider *ngIf="!home"></mat-divider>
+  <mat-card-actions *ngIf="!home">
     <button mat-button color="primary" (click)="onEdit(book)">Edit</button>
     <button mat-button color="warn" (click)="onDelete(book)">Delete</button>
   </mat-card-actions>

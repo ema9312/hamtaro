@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './components/users/users.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { EventComponent } from './components/event/event.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -27,6 +26,8 @@ import { MatConfirmDialogComponent } from './components/shared/dialogs/mat-confi
 import { BooksComponent } from './components/books/books.component';
 import { BookCardComponent } from './components/books/book-card/book-card.component';
 import { BookComponent } from './components/books/book/book.component';
+import { EventsComponent } from './components/events/events.component';
+import { EventComponent } from './components/events/event/event.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +35,15 @@ import { BookComponent } from './components/books/book/book.component';
     UsersComponent,
     NavComponent,
     CalendarComponent,
-    EventComponent,
     HomeComponent,
     UserFormComponent,
     UserComponent,
     MatConfirmDialogComponent,
     BooksComponent,
     BookCardComponent,
-    BookComponent
+    BookComponent,
+    EventsComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

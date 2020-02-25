@@ -1,8 +1,7 @@
 export class Event {
-    id?: number;
+    id?: string;
     name: string;
-    author: string;
-    publisher?: string;
-    cover?: string;
-    rate?: number;
+    start_date: Date;
+    end_date: Date;
+    color: string;
 }

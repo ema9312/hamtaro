@@ -22,6 +22,8 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+import { EventService } from 'src/app/services/event.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 const colors: any = {
   red: {
@@ -121,7 +123,38 @@ export class CalendarComponent {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal,
+    private eventService: EventService
+    ) {}
+
+  // ngOnInit() {
+  //   this.loadData();
+  // }
+
+  // loadData(){
+  //   this.eventService.getEvents().subscribe(eventsSnapshot => {
+  //     this.events = [];
+  //     eventsSnapshot.forEach((eventData: any) => {
+  //       const id  = eventData.payload.doc.id;
+  //       const data = eventData.payload.doc.data();
+  //       this.events.push({
+  //         id: id,
+  //         start: data.start_date, //addHours(startOfDay(new Date()), 2),
+  //         end: data.end_date, //addHours(new Date(), 2),
+  //         title: data.name, //'A draggable and resizable event',
+  //         color: colors.yellow,
+  //         actions: this.actions,
+  //         resizable: {
+  //           beforeStart: true,
+  //           afterEnd: true
+  //         },
+  //         draggable: true
+  //       });
+  //     });
+  //   });
+  //   console.log(this.events)
+  // }
+
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

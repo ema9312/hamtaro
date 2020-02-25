@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { DialogService } from 'src/app/services/dialog.service';
@@ -12,13 +12,12 @@ import { BookComponent } from './book/book.component';
 })
 export class BooksComponent implements OnInit {
 
+  @Input('home') home: boolean;
   public books = [];
 
   constructor(private bookService: BookService,
-    private dialog: MatDialog,
-    private notificationService: NotificationService,
-    private dialogService: DialogService) { 
-      
+    private dialog: MatDialog) {
+
     }
 
   ngOnInit() {

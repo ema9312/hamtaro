@@ -15,7 +15,8 @@ import { DialogService } from 'src/app/services/dialog.service';
 export class BookCardComponent implements OnInit {
 
   @Input('book') book: Book;
-  
+  @Input('home') home: boolean;
+
   constructor(private bookService: BookService,
     private dialog: MatDialog,
     private notificationService: NotificationService,

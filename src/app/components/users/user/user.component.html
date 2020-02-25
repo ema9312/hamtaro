@@ -6,14 +6,16 @@
 
 <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" class="form">
     <mat-form-field class="form-element" appearance="fill">
-        <input matInput placeholder="Name" formControlName="name">
+      <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
         <mat-error *ngIf="!name.valid && name.touched">
           {{ titleAlert }}
         </mat-error>
       </mat-form-field>
 
     <mat-form-field class="form-element" appearance="fill">
-        <input matInput placeholder="Lastname" formControlName="lastname">
+      <mat-label>Lastname</mat-label>
+        <input matInput formControlName="lastname">
         <mat-error *ngIf="!lastname.valid && lastname.touched">
           {{ titleAlert }}
         </mat-error>
@@ -21,21 +23,27 @@
 
 
     <mat-form-field class="form-element" appearance="fill">
-        <input matInput placeholder="Username" formControlName="username">
+      <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
         <mat-error *ngIf="!username.valid && username.touched">
           {{ titleAlert }}
         </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-element" appearance="fill">
-      <input matInput placeholder="Email" formControlName="email">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
       <mat-error *ngIf="!userForm.controls['email'].valid && userForm.controls['email'].touched">
         {{ getErrorEmail() }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-element" appearance="fill">
-      <input matInput placeholder="Password" type="password" formControlName="password">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint>
       <mat-error *ngIf="!userForm.controls['password'].valid && userForm.controls['password'].touched">
         {{ getErrorPassword() }}

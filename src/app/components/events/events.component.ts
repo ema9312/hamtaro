@@ -1,37 +1,35 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { UserService } from "src/app/services/user.service";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatSort } from "@angular/material/sort";
-import { MatPaginator } from "@angular/material/paginator";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { EventService } from 'src/app/services/event.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { DialogService } from 'src/app/services/dialog.service';
-import { UserComponent } from './user/user.component';
-import { Observable } from 'rxjs/internal/Observable';
-import { User } from 'src/app/models/user';
+import { EventComponent } from './event/event.component';
 
 @Component({
-  selector: "app-user",
-  templateUrl: "./users.component.html",
-  styleUrls: ["./users.component.scss"]
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class EventsComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = [
     "name",
-    "lastname",
-    "username",
-    "email",
+    "start_date",
+    "end_date",
+    "color",
     "actions"
   ];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
 
-  public users = [];
+  public events = [];
 
-  constructor(private userService: UserService,
+  constructor(private eventService: EventService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
     private dialogService: DialogService) { }
@@ -42,16 +40,16 @@ export class UsersComponent implements OnInit {
   }
 
   loadData(){
-    this.userService.getUsers().subscribe(usersSnapshot => {
-      this.users = [];
-      usersSnapshot.forEach((userData: any) => {
-        const id  = userData.payload.doc.id;
-        const data = userData.payload.doc.data();
-        this.users.push({
+    this.eventService.getEvents().subscribe(eventsSnapshot => {
+      this.events = [];
+      eventsSnapshot.forEach((eventData: any) => {
+        const id  = eventData.payload.doc.id;
+        const data = eventData.payload.doc.data();
+        this.events.push({
           id: id,
           ...data
         });
-        this.dataSource = new MatTableDataSource(this.users);
+        this.dataSource = new MatTableDataSource(this.events);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });
@@ -74,23 +72,23 @@ export class UsersComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.data = { action: 0}
-    this.dialog.open(UserComponent,dialogConfig);
+    this.dialog.open(EventComponent,dialogConfig);
   }
 
-  onEdit(user){
+  onEdit(event){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    dialogConfig.data = { action: 2, user: user}
-    this.dialog.open(UserComponent,dialogConfig);
+    dialogConfig.data = { action: 2, event: event}
+    this.dialog.open(EventComponent,dialogConfig);
   }
 
   onDelete(id){
     this.dialogService.openConfirmDialog('Are you sure to delete this record?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.userService.deleteUser(id).then();
+        this.eventService.deleteEvent(id).then();
         this.notificationService.warn('Deleted successfully!');
       }
     });
