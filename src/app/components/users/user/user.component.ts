@@ -127,7 +127,6 @@ export class UserComponent implements OnInit {
   onSubmit(post) {
     if (this.userForm.valid) {
       this.post = post;
-      console.log(post);
       if (this.data.action === 0) {
         this.userService.createUser(post);
         this.notificationService.success("User Created!");

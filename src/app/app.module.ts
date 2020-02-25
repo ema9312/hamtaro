@@ -7,6 +7,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 import { MaterialModule } from './material.module';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,6 @@ import { UsersComponent } from './components/users/users.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EventComponent } from './components/event/event.component';
-import { BookComponent } from './components/book/book.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -24,6 +24,9 @@ import { UserFormComponent } from './components/users/user-form/user-form.compon
 import { environment } from 'src/environments/environment';
 import { UserComponent } from './components/users/user/user.component';
 import { MatConfirmDialogComponent } from './components/shared/dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
+import { BooksComponent } from './components/books/books.component';
+import { BookCardComponent } from './components/books/book-card/book-card.component';
+import { BookComponent } from './components/books/book/book.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,13 @@ import { MatConfirmDialogComponent } from './components/shared/dialogs/mat-confi
     NavComponent,
     CalendarComponent,
     EventComponent,
-    BookComponent,
     HomeComponent,
     UserFormComponent,
     UserComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    BooksComponent,
+    BookCardComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { MatConfirmDialogComponent } from './components/shared/dialogs/mat-confi
       useFactory: adapterFactory
     }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

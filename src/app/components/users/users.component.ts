@@ -36,9 +36,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService,
     private dialog: MatDialog,
     private notificationService: NotificationService,
-    private dialogService: DialogService) { 
-      
-    }
+    private dialogService: DialogService) { }
 
 
   ngOnInit() {
@@ -73,7 +71,6 @@ export class UsersComponent implements OnInit {
   }
 
   onCreate() {
-    //this.userService.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -83,7 +80,6 @@ export class UsersComponent implements OnInit {
   }
 
   onEdit(user){
-    //this.userService.populateForm(row);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;

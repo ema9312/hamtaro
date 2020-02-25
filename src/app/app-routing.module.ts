@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EventComponent } from './components/event/event.component';
-import { BookComponent } from './components/book/book.component';
+import { BooksComponent } from './components/books/books.component';
 import { HomeComponent } from './components/home/home.component';
 
 
@@ -22,8 +22,8 @@ const routes: Routes = [
       // }
   },
    {
-      path: 'book',
-      component: BookComponent,
+      path: 'books',
+      component: BooksComponent,
   },
    {
       path: 'event',
