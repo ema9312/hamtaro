@@ -9,12 +9,15 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './components/users/users.component';
 import { NavComponent } from './components/nav/nav.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -52,6 +55,8 @@ import { EventComponent } from './components/events/event/event.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
