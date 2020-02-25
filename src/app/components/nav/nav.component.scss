@@ -3,3 +3,7 @@ a {
   color: $default_white;
   text-decoration: none;
 }
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}

@@ -2,14 +2,15 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { User } from '../../models/user';
+import { User } from 'src/app/models/user';
+
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
   titleAlert: string = 'This field is required';
@@ -17,9 +18,10 @@ export class UserComponent implements OnInit {
   @Output() addEvent = new EventEmitter<any>();
   @Output() editEvent = new EventEmitter<any>();
   @Input() canAdd : boolean = true;
-  //@Input('selectedUser') event: User = new User();
+  @Input('selectedUser') user: User = new User();
   public submitted: boolean = false;
   public isEditing: boolean = false;
+  public loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder) { }
 

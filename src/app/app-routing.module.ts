@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserComponent } from './components/user/user.component';
+import { UsersComponent } from './components/users/users.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EventComponent } from './components/event/event.component';
 import { BookComponent } from './components/book/book.component';
@@ -15,8 +15,8 @@ const routes: Routes = [
 
   },
   {
-      path: 'user',
-      component: UserComponent,
+      path: 'users',
+      component: UsersComponent,
       // resolve: {
       //     csrf: CsrfResolver
       // }
