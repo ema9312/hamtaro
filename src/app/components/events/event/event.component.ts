@@ -36,10 +36,10 @@ export class EventComponent implements OnInit {
       this.action = "Edit";
       this.event =  this.data.event;
       this.eventForm.setValue({
-        name: this.event.name,
-        start_date: this.event.start_date,
-        end_date: this.event.end_date,
-        color: this.event.color
+        name: this.data.event.name,
+        start_date: this.data.event.start_date.toDate(),
+        end_date: this.data.event.end_date.toDate(),
+        color: this.data.event.color
       });
     }
   }
